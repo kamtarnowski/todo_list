@@ -1,0 +1,26 @@
+{
+  "name": "ToDoList",
+  "homepage": "https://github.com/kamtarnowski/angular.js",
+  "authors": [
+    "kamtarnowski <kam.tarnowski@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "",
+    "angular-ui-router": "",
+    "angular-resource": "",
+    "bootstrap-sass-official": "",
+    "font-awesome": ""
+  }
+}
