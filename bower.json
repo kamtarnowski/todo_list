@@ -21,6 +21,7 @@
     "angular-ui-router": "",
     "angular-resource": "",
     "bootstrap-sass-official": "",
-    "font-awesome": ""
+    "font-awesome": "",
+    "angular-devise": ""
   }
 }

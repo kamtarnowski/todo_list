@@ -1,4 +1,4 @@
-angular.module('ToDoList', ['ui.router', 'templates'])
+angular.module('ToDoList', ['ui.router', 'templates', 'Devise'])
 
 .controller('MainCtrl', [
   '$scope',
@@ -13,7 +13,7 @@ angular.module('ToDoList', ['ui.router', 'templates'])
     $stateProvider
       .state('home', {
         url: '/home',
-        templateUrl: 'home/_home.html',
+        templateUrl: 'templates/_home.html',
         controller: 'MainCtrl'
       });
 

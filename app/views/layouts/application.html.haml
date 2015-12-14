@@ -8,6 +8,8 @@
     = csrf_meta_tags
   %script{type: 'text/ng-template', id: '/home.html'}
     %h1 ToDoList
-  %body{"ng-app" => "todoList"}
+  %body{"ng-app" => "ToDoList"}
     .container-fluid
+      = render 'partials/navbar'
       %ui-view
+      = render 'partials/footer'
