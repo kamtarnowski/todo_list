@@ -1,0 +1,13 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title TodoList
+    = stylesheet_link_tag 'application', media: 'all'
+    = javascript_include_tag 'application'
+    = csrf_meta_tags
+  %script{type: 'text/ng-template', id: '/home.html'}
+    %h1 ToDoList
+  %body{"ng-app" => "todoList"}
+    .container-fluid
+      %ui-view

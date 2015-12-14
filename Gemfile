@@ -24,6 +24,10 @@ gem 'sdoc', '~> 0.4.0', group: :doc, require: false
 # gem 'capistrano-rails', group: :development
 
 gem 'responders', '1.0.0'
+gem 'puma'
+gem "haml-rails", "~> 0.9"
+gem 'angular_rails_csrf'
+gem 'angular-rails-templates'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
