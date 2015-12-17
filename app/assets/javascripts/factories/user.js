@@ -9,5 +9,5 @@ angular.module('ToDoList')
         angular.copy(data, o.user);
       });
     };
-  };
+  }
 ]);

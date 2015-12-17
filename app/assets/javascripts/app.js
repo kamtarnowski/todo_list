@@ -22,6 +22,7 @@ angular.module('ToDoList', ['ui.router', 'templates', 'Devise'])
         onEnter: ['$state', 'Auth', function($state, Auth) {
           Auth.currentUser().then(function (){
             $state.go('home');
+            alertify.message('You are already signed in.');
           });
         }]
       })
@@ -32,6 +33,7 @@ angular.module('ToDoList', ['ui.router', 'templates', 'Devise'])
         onEnter: ['$state', 'Auth', function($state, Auth) {
           Auth.currentUser().then(function (){
             $state.go('home');
+            alertify.message('You are already signed in.');
           });
         }]
       })

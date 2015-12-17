@@ -5,5 +5,6 @@
 //= require angular-devise
 //= require angular-ui-router
 //= require angular-resource
+//= require alertifyjs
 //= require bootstrap-sass-official
 //= require_tree .

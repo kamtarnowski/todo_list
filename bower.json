@@ -22,6 +22,7 @@
     "angular-resource": "",
     "bootstrap-sass-official": "",
     "font-awesome": "",
-    "angular-devise": ""
+    "angular-devise": "",
+    "alertifyjs": ""
   }
 }
