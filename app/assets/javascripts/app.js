@@ -1,4 +1,4 @@
-angular.module('ToDoList', ['ui.router', 'templates', 'Devise'])
+angular.module('ToDoList', ['ui.router', 'templates', 'Devise', 'ngResource'])
 
 .controller('MainCtrl', [
   '$scope',
@@ -22,7 +22,7 @@ angular.module('ToDoList', ['ui.router', 'templates', 'Devise'])
         onEnter: ['$state', 'Auth', function($state, Auth) {
           Auth.currentUser().then(function (){
             $state.go('home');
-            alertify.message('You are already signed in.');
+            alertify.error('You are already signed in.');
           });
         }]
       })
@@ -33,19 +33,14 @@ angular.module('ToDoList', ['ui.router', 'templates', 'Devise'])
         onEnter: ['$state', 'Auth', function($state, Auth) {
           Auth.currentUser().then(function (){
             $state.go('home');
-            alertify.message('You are already signed in.');
+            alertify.error('You are already signed in.');
           });
         }]
       })
       .state('profile', {
         url: '/profile/:id',
         templateUrl: '/templates/_profile.html',
-        controller: 'UserCtrl',
-        resolve: {
-          userPromise: ['user', function(user){
-            return user.show();
-          }]
-        }
+        controller: 'UserCtrl'
       });
 
     $urlRouterProvider.otherwise('home');
