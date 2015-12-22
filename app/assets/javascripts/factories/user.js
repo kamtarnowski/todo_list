@@ -1,32 +1,38 @@
 angular.module('ToDoList')
 .factory('User', [
   '$http',
-  '$stateParams',
-  function($http, $stateParams) {
+  '$resource',
+  function($http, $resource) {
     var o = {
       users: []
     };
 
-    o.get_user = function() {
-      console.log($stateParams.id);
-      o.users.push( {$http.get('users/' + $stateParams.id, {} }));
-
-
-      // $http.get('/users/' + $stateParams.id).success(function(data){
-      //   console.log(data);
-      //   angular.copy(data, o.user);
-      //
-      // });
+    o.get_user = function(id) {
+      return $http.get('/users/' + id + '.json', {})
     };
-    console.log(o.users);
-    return o;
 
+    o.edit_user = function(id, attributes) {
+
+      if (attributes[3] == attributes[2]) {
+        console.log(attributes);
+        console.log(id);
+        var Update = $resource('/users/:id', { id: '@id' });
+        var user = Update.put({id: id}, function() {
+
+          user.email = attributes[0];
+          user.username = attributes[1];
+          user.password = attributes[2];
+          user.password_confirmation = attributes[2];
+          user.$save();
+        });
+        // return $http.put('/users/' + user.id + ".json");
+        // console.log(user);
+      } else {
+
+        return false;
+      };
+    };
+
+    return o;
   }
 ]);
-
-// angular.module('ToDoList')
-// .factory('User', function($resource) {
-//   return $resource("/users/:id", { id: "@id" }, {
-//     show:    { method: 'GET' }
-//   });
-// });

@@ -3,8 +3,73 @@
     <h1>Profile</h1>
   </div>
 
-  <div>{{ user.email }}
+  <div class='col-md-6 col-md-offset-1'>
 
+    <table class='table' ng-show='edit_button'>
+      <tr>
+        <td>
+          Email:
+        </td>
+        <td>
+          {{ user.email }}
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Username:
+        </td>
+        <td>
+          {{ user.username }}
+        </td>
+      </tr>
+    </table>
+
+    <form ng-submit='edit()'>
+      <table class='table' ng-hide='edit_button==true'>
+        <tr>
+          <td>
+            Email:
+          </td>
+          <td>
+            <input type='email' ng-model='user.email' class="form-control">
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Username:
+          </td>
+          <td>
+            <input type='text' ng-model='user.username' class="form-control">
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Password:
+          </td>
+          <td>
+            <input type='password' ng-model='user.password' class="form-control">
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Password confirmation:
+          </td>
+          <td>
+            <input type='password' ng-model='user.password_confirmation' class="form-control">
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <input type='submit' class='btn btn-default' value='Submit'>
+          </td>
+          <td>
+          </td>
+        </tr>
+      </table>
+    </form>
+
+    <button class='btn btn-default' ng-click="edit_button=false" ng-hide="edit_button==false">
+      Edit
+    </button>
   </div>
-
 </div>

@@ -7,6 +7,7 @@ angular.module('ToDoList')
     $scope.login = function() {
       Auth.login($scope.user).then(function() {
         $state.go('home');
+        alertify.success('Authentication succeeded.');
       }, function(error) {
         $state.go('login');
         alertify.error('Authentication failed.');
@@ -16,6 +17,7 @@ angular.module('ToDoList')
     $scope.register = function() {
       Auth.register($scope.user).then(function() {
         $state.go('home');
+        alertify.success('Registration succeeded.');
       }, function(error) {
         $state.go('register');
         alertify.error('Registration failed.');
