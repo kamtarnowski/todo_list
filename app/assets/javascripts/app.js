@@ -1,10 +1,11 @@
 angular.module('ToDoList', ['ui.router', 'templates', 'Devise', 'ngResource'])
 
-.controller('MainCtrl', [
-  '$scope',
-  function($scope){
-    $scope.home = 'Hello world!';
+.controller('AppCtrl', ["$scope", function($scope) {
+  $scope.$back = function() {
+    window.history.back();
+  }
 }])
+
 .config([
   '$stateProvider',
   '$urlRouterProvider',
@@ -12,8 +13,7 @@ angular.module('ToDoList', ['ui.router', 'templates', 'Devise', 'ngResource'])
     $stateProvider
       .state('home', {
         url: '/home',
-        templateUrl: '/templates/_home.html',
-        controller: 'MainCtrl'
+        templateUrl: '/templates/_home.html'
       })
       .state('login', {
         url: '/login',
@@ -40,6 +40,21 @@ angular.module('ToDoList', ['ui.router', 'templates', 'Devise', 'ngResource'])
       .state('profile', {
         url: '/profile/:id',
         templateUrl: '/templates/_profile.html',
+        controller: 'UserCtrl'
+      })
+      .state('tasks', {
+        url: '/tasks',
+        templateUrl: '/templates/_tasks.html',
+        controller: 'TasksCtrl'
+      })
+      .state('users', {
+        url: '/users',
+        templateUrl: '/templates/_users.html',
+        controller: 'UsersCtrl'
+      })
+      .state('edit_user', {
+        url: '/edit_user/:id',
+        templateUrl: 'templates/_edit_user.html',
         controller: 'UserCtrl'
       });
 

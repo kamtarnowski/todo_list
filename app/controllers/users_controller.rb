@@ -1,16 +1,21 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
 
+  def index
+    users = User.order(created_at: :desc)
+    respond_with users
+  end
+
   def show
-    @user = User.find(params[:id])
+    user = User.find(params[:id])
     raise "error" if current_user.id != params[:id].to_i
-    respond_with @user
+    respond_with user
   end
 
   def update
-    @user = User.find(params[:id])
-    if @user.update(user_params)
-      respond_with @user
+    user = User.find(params[:id])
+    if user.update(user_params)
+      respond_with user
     else
       false
     end

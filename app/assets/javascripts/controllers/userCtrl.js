@@ -1,30 +1,29 @@
 angular.module('ToDoList')
 .controller('UserCtrl', [
+  'AppFactory',
   '$scope',
   'User',
   '$stateParams',
-  function($scope, User, $stateParams) {
+  '$state',
+  '$window',
+  function(AppFactory, $scope, User, $stateParams, $state, $window) {
     User.get_user($stateParams.id).success(function(response) {
       $scope.user = response;
     });
     $scope.edit_button = true;
-    // $scope.edit = function() {
-    //   User.edit_user($scope.user.id, [$scope.user.email, $scope.user.username, $scope.user.password, $scope.user.password_confirmation]).success(function() {
-    //     // $state.go('home');
-    //     alertify.success('good');
-    //   }).error(function() {
-    //     // $state.go('home');
-    //     alertify.error('żle');
-    //   });
-    // };
     $scope.edit = function() {
-      var user = User.edit_user($scope.user.id).update({id: $scope.user.id, email: $scope.user.email, password: $scope.user.password, password_confirmation: $scope.user.password_confirmation, username: $scope.user.username},
+      var user = User.edit_user($scope.user.id).update({id: $scope.user.id, email: $scope.user.email, username: $scope.user.username},
         function() {
-          alertify.success('good');
+          if (AppFactory.get_url() != []) {
+            $window.location.href = AppFactory.get_url();
+          } else {
+          $state.go('home');
+          }
+          alertify.success('User data has been succesfully changed.');
         },
         function() {
-          alertify.error('zle');
+          alertify.error('Wrong data input.');
         })
-    }
+    };
   }
 ]);
