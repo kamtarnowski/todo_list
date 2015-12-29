@@ -39,9 +39,7 @@
           </td>
           <td class='text-right'>
             <a href="#/edit_user/{{user.id}}" class='btn btn-primary btn-xs' ng-click='$url_cached()' ng-controller='AppCtrl'>Edit</a>
-            <!-- <a ng-click
-            <a href="#/user/{{user.id}}" class='btn btn-primary btn-xs'>Delete</a>
-            delete -->
+            <a ng-click="destroy(user.id)" class='btn btn-danger btn-xs'>Delete</a>
           </td>
         </tr>
         <!-- <tr>

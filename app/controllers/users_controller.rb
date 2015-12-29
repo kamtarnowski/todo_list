@@ -14,11 +14,12 @@ class UsersController < ApplicationController
 
   def update
     user = User.find(params[:id])
-    if user.update(user_params)
-      respond_with user
-    else
-      false
-    end
+    user.update(user_params) ? respond_with(user) : false
+  end
+
+  def destroy
+    user = User.find(params[:id])
+    user.destroy ? respond_with(user) : false
   end
 
   private

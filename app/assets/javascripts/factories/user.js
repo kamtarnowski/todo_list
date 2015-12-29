@@ -20,6 +20,11 @@ angular.module('ToDoList')
         update: { method: 'PUT', params: { id: '@id' }}
       })
     };
+
+    o.destroy = function(id) {
+      return $http.delete('/users/' + id + '.json', {})
+    }
+    
     return o;
   }
 ]);

@@ -3,7 +3,8 @@ angular.module('ToDoList')
   '$scope',
   'User',
   'AppFactory',
-  function($scope, User, AppFactory) {
+  '$state',
+  function($scope, User, AppFactory, $state) {
     AppFactory.save();
     User.index().success(function(response) {
       $scope.users = response;
@@ -20,6 +21,15 @@ angular.module('ToDoList')
         function() {
           alertify.error('Wrong data input.');
         })
+    };
+    $scope.destroy = function(id) {
+      User.destroy(id).success(function() {
+        $state.go('users');
+        alertify.success('User has been deleted.')
+      })
+      .error(function() {
+        alertify.error('User has not been deleted.')
+      })
     };
   }
 ]);
