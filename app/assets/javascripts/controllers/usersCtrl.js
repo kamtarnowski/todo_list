@@ -22,14 +22,16 @@ angular.module('ToDoList')
           alertify.error('Wrong data input.');
         })
     };
-    $scope.destroy = function(id) {
-      User.destroy(id).success(function() {
-        $state.go('users');
-        alertify.success('User has been deleted.')
+    $scope.destroy = function(user, index) {
+      if (confirm("Are you sure you want to delete this user?")){
+      User.destroy(user.id).success(function() {
+        $scope.users.splice(index, 1);
+        alertify.success('User has been deleted.');
       })
       .error(function() {
         alertify.error('User has not been deleted.')
-      })
+      });
+      }
     };
   }
 ]);

@@ -39,26 +39,9 @@
           </td>
           <td class='text-right'>
             <a href="#/edit_user/{{user.id}}" class='btn btn-primary btn-xs' ng-click='$url_cached()' ng-controller='AppCtrl'>Edit</a>
-            <a ng-click="destroy(user.id)" class='btn btn-danger btn-xs'>Delete</a>
+            <a ng-click="destroy(user, $index)" class='btn btn-danger btn-xs'>Delete</a>
           </td>
         </tr>
-        <!-- <tr>
-          <form ng-submit="edit(user.id, user.email, user.username)">
-            <td>
-            </td>
-            <td>
-            </td>
-            <td>
-              <input type='email' ng-model='user.email' class='form-control' placeholder="Email">
-            </td>
-            <td>
-              <input type='string' ng-model='user.username' class="form-control" placeholder="Username">
-            </td>
-            <td class='text-right'>
-              <input type='submit' class='btn btn-default' value='Submit'>
-            </td>
-          </form>
-        </tr> -->
       </tbody>
     </table>
   </div>
