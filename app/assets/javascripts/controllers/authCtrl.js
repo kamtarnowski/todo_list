@@ -7,20 +7,20 @@ angular.module('ToDoList')
     $scope.login = function() {
       Auth.login($scope.user).then(function() {
         $state.go('home');
-        alertify.success('Authentication succeeded.');
+        alertify.success('Authentication has succeeded.');
       }, function(error) {
         $state.go('login');
-        alertify.error('Authentication failed.');
+        alertify.error('Authentication has failed.');
       });
     };
 
     $scope.register = function() {
       Auth.register($scope.user).then(function() {
         $state.go('home');
-        alertify.success('Registration succeeded.');
+        alertify.success('Registration has succeeded.');
       }, function(error) {
         $state.go('register');
-        alertify.error('Registration failed.');
+        alertify.error('Registration has failed.');
       });
     };
   }

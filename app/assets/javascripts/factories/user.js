@@ -24,7 +24,7 @@ angular.module('ToDoList')
     o.destroy = function(id) {
       return $http.delete('/users/' + id + '.json', {})
     }
-    
+
     return o;
   }
 ]);

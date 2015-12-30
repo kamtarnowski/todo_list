@@ -18,12 +18,12 @@ ActiveRecord::Schema.define(version: 20151228142738) do
 
   create_table "tasks", force: :cascade do |t|
     t.integer  "user_id"
-    t.integer  "completed"
-    t.string   "status"
+    t.integer  "completed",   default: 0
+    t.integer  "status",      default: 0
     t.string   "title"
     t.text     "description"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
   end
 
   add_index "tasks", ["completed"], name: "index_tasks_on_completed", using: :btree

@@ -1,11 +1,56 @@
-<div class='container'>
+<div class='container' ng-init='tasks()'>
   <div class="page-header">
     <h1>Tasks</h1>
   </div>
 
-  <div class='col-md-6 col-md-offset-1'>
-
-    
-
+  <div class='table-responsive'>
+    <table class='table table-hover table-bordered'>
+      <thead>
+        <tr>
+          <th>
+            No.
+          </th>
+          <th>
+            Title
+          </th>
+          <th>
+            Description
+          </th>
+          <th>
+            Status
+          </th>
+          <th>
+            Completed
+          </th>
+          <th class='text-right'>
+            Actions
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="task in tasks | orderBy: status">
+          <td>
+            {{$index + 1}}.
+          </td>
+          <td>
+            {{task.title}}
+          </td>
+          <td>
+            {{task.description}}
+          </td>
+          <td>
+            {{task.status}}
+          </td>
+          <td>
+            {{task.completed}}%
+          </td>
+          <td class='text-right'>
+            <!-- <a href="#/edit_user/{{user.id}}" class='btn btn-primary btn-xs'>Edit</a> -->
+            <a href="#/edit_task/{{task.id}}" class='btn btn-primary btn-xs'>Edit</a>
+            <a ng-click="destroy(user, $index)" class='btn btn-danger btn-xs'>Delete</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </div>
