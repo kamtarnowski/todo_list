@@ -8,7 +8,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    raise "error" if current_user.id != params[:id].to_i
+    # raise "error" if current_user.id != params[:id].to_i
     respond_with @user
   end
 

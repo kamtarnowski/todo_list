@@ -10,8 +10,6 @@
     %h1 ToDoList
   %body{"ng-app" => "ToDoList"}
     .container-fluid.margin-navbar
-      - if flash[:success]
-        = success
       = render 'partials/navbar'
       %ui-view
       = render 'partials/footer'

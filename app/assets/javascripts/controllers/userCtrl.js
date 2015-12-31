@@ -10,6 +10,9 @@ angular.module('ToDoList')
     User.get_user($stateParams.id).success(function(response) {
       $scope.user = response;
       $scope.staticUsername = $scope.user.username;
+    })
+    .error(function() {
+      alertify.error('Error has occured.')
     });
     $scope.edit_button = true;
     $scope.edit = function() {

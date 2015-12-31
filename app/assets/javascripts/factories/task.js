@@ -12,9 +12,12 @@ angular.module('ToDoList')
     };
 
     o.find = function(id) {
-      return $http.get('/task' + id + '.json', {});
+      return $http.get('/tasks/' + id + '/edit.json', {});
     };
 
     return o;
   }
 ])
+
+
+// /tasks/:id/edit(.:format)
