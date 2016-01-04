@@ -6,11 +6,11 @@ angular.module('ToDoList')
     var o = [];
 
     o.index = function() {
-      return $http.get('/tasks.json', {});
+      return $http.get('/tasks.json', {})
     };
 
     o.find = function(id) {
-      return $http.get('/tasks/' + id + '/edit.json', {});
+      return $http.get('/tasks/' + id + '/edit.json', {})
     };
 
     o.edit = function(id) {

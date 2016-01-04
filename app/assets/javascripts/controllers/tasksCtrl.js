@@ -15,8 +15,10 @@ angular.module('ToDoList')
     };
     $scope.search_task = function() {
       Task.find($stateParams.id).success(function(response) {
-        $scope.task = response;
+        $scope.task = response[0];
+        $scope.username = response[1].username;
         $scope.fixed_title = $scope.task.title;
+        $scope.user_id = $scope.task.user_id;
       }).error(function() {
         alertify.error("Error has occured.");
       });
@@ -27,11 +29,16 @@ angular.module('ToDoList')
         $scope.users = [];
       });
     };
+    $scope.selected = function() {
+      $scope.user_id = $scope.task.user_id.id;
+    };
     $scope.edit = function() {
       Task.edit($scope.task.id).update({id: $scope.task.id,
                                                   title: $scope.task.title,
                                                   description: $scope.task.description,
-                                                  completed: $scope.task.completed},
+                                                  completed: $scope.task.completed,
+                                                  user_id: $scope.task.user_id.id
+        },
         function() {
           $state.go('tasks');
           alertify.success('Task data has been succesfully changed.');

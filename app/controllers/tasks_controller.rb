@@ -21,8 +21,8 @@ class TasksController < ApplicationController
 
   # GET /tasks/1/edit
   def edit
-    @task = Task.find(params[:id])
-    respond_with @task
+    task = Task.find(params[:id])
+    respond_with([task, task.user])
   end
 
   # POST /tasks
@@ -44,8 +44,8 @@ class TasksController < ApplicationController
   # PATCH/PUT /tasks/1
   # PATCH/PUT /tasks/1.json
   def update
-    @task = Task.find(params[:id])
-    @task.update(task_params) ? respond_with(@task) : false
+    task = Task.find(params[:id])
+    task.update(task_params) ? respond_with(task) : false
   end
 
   # DELETE /tasks/1
@@ -63,6 +63,6 @@ class TasksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def task_params
-      params.require(:task).permit(:user_id, :completed, :status, :title, :description)
+      params.require(:task).permit(:id, :completed, :user_id, :title, :description)
     end
 end

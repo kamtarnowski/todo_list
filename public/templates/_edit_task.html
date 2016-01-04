@@ -27,7 +27,7 @@
             Completed:
           </td>
           <td>
-            <input type='number' min='0' max='100' ng-model='task.completed' class="form-control" required>
+            <input type='range' min='0' max='100' ng-model='task.completed' class="form-control" required>
           </td>
         </tr>
         <tr>
@@ -35,9 +35,9 @@
             User:
           </td>
           <td>
-            <select ng-model="task.user_id" ng-options="user.username for user in users">
-
-            </select>
+            {{username}}
+            <select ng-model="task.user_id" ng-options="user.username for user in users" ng-change="selected()"></select>
+            <input type="number" value="{{user_id}}" hidden>
           </td>
         </tr>
       </table>
