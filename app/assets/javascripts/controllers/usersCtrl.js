@@ -14,7 +14,7 @@ angular.module('ToDoList')
     });
 
     $scope.edit = function(id, email, username) {
-      var user = User.edit_user(id).update({id: id, email: email, username: username},
+      User.edit_user(id).update({id: id, email: email, username: username},
         function() {
           alertify.success('User data has been succesfully changed.');
         },

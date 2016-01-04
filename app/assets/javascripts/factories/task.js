@@ -15,9 +15,12 @@ angular.module('ToDoList')
       return $http.get('/tasks/' + id + '/edit.json', {});
     };
 
+    o.edit = function(id) {
+      return $resource('/tasks/' + id + '.json', {}, {
+        update: { method: 'PUT', params: { id: '@id'}}
+      });
+    };
+
     return o;
   }
-])
-
-
-// /tasks/:id/edit(.:format)
+]);
