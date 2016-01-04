@@ -40,5 +40,16 @@ angular.module('ToDoList')
           alertify.error('Wrong data input.');
         })
     };
+    $scope.destroy = function(task, index) {
+      if (confirm("Are you sure you want to delete this task?")){
+      Task.destroy(task.id).success(function() {
+        $scope.tasks.splice(index, 1);
+        alertify.success('Task has been deleted.');
+      })
+      .error(function() {
+        alertify.error('Task has not been deleted.')
+      });
+      }
+    };
   }
 ]);

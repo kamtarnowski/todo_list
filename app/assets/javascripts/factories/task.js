@@ -3,9 +3,7 @@ angular.module('ToDoList')
   '$resource',
   '$http',
   function($resource, $http) {
-    var o = {
-      tasks: []
-    };
+    var o = [];
 
     o.index = function() {
       return $http.get('/tasks.json', {});
@@ -19,6 +17,10 @@ angular.module('ToDoList')
       return $resource('/tasks/' + id + '.json', {}, {
         update: { method: 'PUT', params: { id: '@id'}}
       });
+    };
+
+    o.destroy = function(id) {
+      return $http.delete('/tasks/' + id + '.json', {})
     };
 
     return o;
