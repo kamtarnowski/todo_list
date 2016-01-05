@@ -23,6 +23,10 @@ angular.module('ToDoList')
       return $http.delete('/tasks/' + id + '.json', {})
     };
 
+    o.new = function(task_params) {
+      return $http.post('/tasks.json', { task: task_params })
+    };
+
     return o;
   }
 ]);

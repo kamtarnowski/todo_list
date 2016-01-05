@@ -13,7 +13,8 @@ angular.module('ToDoList', ['ui.router', 'templates', 'Devise', 'ngResource'])
     $stateProvider
       .state('home', {
         url: '/home',
-        templateUrl: '/templates/_home.html'
+        templateUrl: '/templates/_home.html',
+        controller: 'HomeCtrl'
       })
       .state('login', {
         url: '/login',
@@ -60,6 +61,11 @@ angular.module('ToDoList', ['ui.router', 'templates', 'Devise', 'ngResource'])
       .state('edit_task', {
         url: '/edit_task/:id',
         templateUrl: 'templates/_edit_task.html',
+        controller: 'TasksCtrl'
+      })
+      .state('new_task', {
+        url: '/tasks/new',
+        templateUrl: 'templates/_new_task.html',
         controller: 'TasksCtrl'
       });
 

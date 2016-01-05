@@ -22,6 +22,8 @@ angular.module('ToDoList')
       }).error(function() {
         alertify.error("Error has occured.");
       });
+    };
+    $scope.users = function() {
       User.index().success(function(response) {
         $scope.users = response;
       })
@@ -34,10 +36,10 @@ angular.module('ToDoList')
     };
     $scope.edit = function() {
       Task.edit($scope.task.id).update({id: $scope.task.id,
-                                                  title: $scope.task.title,
-                                                  description: $scope.task.description,
-                                                  completed: $scope.task.completed,
-                                                  user_id: $scope.task.user_id.id
+                                        title: $scope.task.title,
+                                        description: $scope.task.description,
+                                        completed: $scope.task.completed,
+                                        user_id: $scope.task.user_id.id
         },
         function() {
           $state.go('tasks');
@@ -56,7 +58,20 @@ angular.module('ToDoList')
       .error(function() {
         alertify.error('Task has not been deleted.')
       });
-      }
+    };
+    };
+    $scope.new = function() {
+      Task.new({title: $scope.task.title,
+                description: $scope.task.description,
+                completed: $scope.task.completed,
+                user_id: $scope.user_id})
+      .success(function() {
+        $state.go('tasks');
+        alertify.success('Task has been succesfully created.')
+      })
+      .error(function() {
+        alertify.error('There was a problem with new task.')
+      });
     };
   }
 ]);
