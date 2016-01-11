@@ -35,6 +35,10 @@ angular.module('ToDoList')
       return $http.get('/tasks.json', { params: { tasks: 'inactive' }})
     };
 
+    o.show = function(id) {
+      return $http.get('/tasks/' + id + '.json', {})
+    };
+
     return o;
   }
 ]);

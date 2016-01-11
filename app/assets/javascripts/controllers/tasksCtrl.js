@@ -73,5 +73,16 @@ angular.module('ToDoList')
         alertify.error('There was a problem with new task.')
       });
     };
+    $scope.show = function() {
+      Task.show($stateParams.id).success(function(response) {
+        $scope.task = response[0];
+        $scope.user = response[1];
+        if ($scope.user == null) {
+          $scope.user_tasks = response[2];
+        }
+      }).error(function() {
+        alertify.error("Error has occured.");
+      });
+    };
   }
 ]);

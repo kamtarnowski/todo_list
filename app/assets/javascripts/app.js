@@ -67,6 +67,11 @@ angular.module('ToDoList', ['ui.router', 'templates', 'Devise', 'ngResource'])
         url: '/tasks/new',
         templateUrl: 'templates/_new_task.html',
         controller: 'TasksCtrl'
+      })
+      .state('show_task', {
+        url: '/tasks/:id',
+        templateUrl: 'templates/_show_task.html',
+        controller: 'TasksCtrl'
       });
 
     $urlRouterProvider.otherwise('home');

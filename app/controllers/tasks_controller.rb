@@ -18,7 +18,14 @@ class TasksController < ApplicationController
   # GET /tasks/1
   # GET /tasks/1.json
   def show
-    respond_with(task)
+    if @task.user.present?
+      array = @task.user.tasks.pluck(:id)
+      array.delete(params[:id].to_i)
+      random_user_tasks = array.sample(2)
+    end
+    array = [@task, @task.user, random_user_tasks]
+    render json: array
+    # respond_with(array)
   end
 
   # GET /tasks/new
@@ -28,7 +35,7 @@ class TasksController < ApplicationController
 
   # GET /tasks/1/edit
   def edit
-    respond_with([task, task.user])
+    respond_with([@task, @task.user])
   end
 
   # POST /tasks
@@ -41,19 +48,19 @@ class TasksController < ApplicationController
   # PATCH/PUT /tasks/1
   # PATCH/PUT /tasks/1.json
   def update
-    task.update(task_params) ? respond_with(task) : false
+    task.update(task_params) ? respond_with(@task) : false
   end
 
   # DELETE /tasks/1
   # DELETE /tasks/1.json
   def destroy
-    task.destroy ? respond_with(task) : false
+    task.destroy ? respond_with(@task) : false
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_task
-      task = Task.find(params[:id])
+      @task = Task.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
