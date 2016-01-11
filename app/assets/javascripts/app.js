@@ -72,7 +72,18 @@ angular.module('ToDoList', ['ui.router', 'templates', 'Devise', 'ngResource'])
         url: '/tasks/:id',
         templateUrl: 'templates/_show_task.html',
         controller: 'TasksCtrl'
-      });
+      })
+      .state('new_user', {
+        url: '/users/new',
+        templateUrl: 'templates/_new_user.html',
+        controller: 'UsersCtrl'
+      })
+      .state('show_user', {
+        url: '/users/:id',
+        templateUrl: 'templates/_show_user.html',
+        controller: 'UserCtrl'
+      })
+      ;
 
     $urlRouterProvider.otherwise('home');
 }])

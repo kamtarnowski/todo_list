@@ -11,8 +11,8 @@ angular.module('ToDoList')
       return $http.get('/users.json', {})
     };
 
-    o.get_user = function(id) {
-      return $http.get('/users/' + id + '.json', {})
+    o.get_user = function(id, tasks = null) {
+      return $http.get('/users/' + id + '.json', { params: { task: tasks }})
     };
 
     o.edit_user = function(id) {
@@ -23,7 +23,11 @@ angular.module('ToDoList')
 
     o.destroy = function(id) {
       return $http.delete('/users/' + id + '.json', {})
-    }
+    };
+
+    o.new = function(user_params) {
+      return $http.post('/users.json', { user: user_params })
+    };
 
     return o;
   }

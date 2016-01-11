@@ -1,0 +1,133 @@
+<div class='container' ng-init="find(); tab_active_tasks()">
+  <div class="page-header">
+    <h1>User: {{ user.username }}</h1>
+  </div>
+
+  <div class="row">
+    <div class='col-md-6 col-md-offset-1'>
+      <table class='table table-hover table-bordered' ng-show='edit_button'>
+        <tr>
+          <td>
+            Email:
+          </td>
+          <td>
+            {{ user.email }}
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Username:
+          </td>
+          <td>
+            {{ user.username }}
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <ul class="nav nav-tabs" ng-show="active_tasks || inactive_tasks">
+    <li class='active' id='active_tasks'>
+      <a ng-click="tab_active_tasks()">Active</a>
+    </li>
+    <li id='inactive_tasks'>
+      <a ng-click="tab_inactive_tasks()">Finished</a>
+    </li>
+  </ul>
+
+  <div class="tab-content" ng-show="active_tasks || inactive_tasks">
+    <div id="tab_active_tasks" class="tab-pane">
+      <br>
+      <div class='table-responsive'>
+        <table class='table table-hover table-bordered'>
+          <thead>
+            <tr>
+              <th>
+                No.
+              </th>
+              <th>
+                Title
+              </th>
+              <th>
+                Description
+              </th>
+              <th>
+                Completed
+              </th>
+              <th class='text-right'>
+                Actions
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="task in active_tasks | orderBy: completed">
+              <td>
+                {{$index + 1}}.
+              </td>
+              <td>
+                <a href="#/tasks/{{task.id}}">{{task.title}}</a>
+              </td>
+              <td>
+                {{task.description}}
+              </td>
+              <td>
+                {{task.completed}}%
+              </td>
+              <td class='text-right'>
+                <a href="#/tasks/{{task.id}}" class='btn btn-primary btn-xs'>Show</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div id="tab_inactive_tasks" class="tab-pane">
+      <br>
+      <div class='table-responsive'>
+        <table class='table table-hover table-bordered'>
+          <thead>
+            <tr>
+              <th>
+                No.
+              </th>
+              <th>
+                Title
+              </th>
+              <th>
+                Description
+              </th>
+              <th>
+                Completed
+              </th>
+              <th class='text-right'>
+                Actions
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="task in inactive_tasks">
+              <td>
+                {{$index + 1}}.
+              </td>
+              <td>
+                <a href="#/tasks/{{task.id}}">{{task.title}}</a>
+              </td>
+              <td>
+                {{task.description}}
+              </td>
+              <td>
+                {{task.completed}}%
+              </td>
+              <td class='text-right'>
+                <a href="#/tasks/{{task.id}}" class='btn btn-primary btn-xs'>Show</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <br>
+  <a href="#/users" class="btn btn-default">Back</a>
+</div>

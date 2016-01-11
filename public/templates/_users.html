@@ -1,6 +1,11 @@
-<div class='container'>
+<div class='container' ng-init="index()">
   <div class="page-header">
-    <h1>Users</h1>
+    <h1>
+      <span>Users</span>
+      <span class='right'>
+        <a href="#/users/new" class="btn btn-default">Create new user</a>
+      </span>
+    </h1>
   </div>
   <div class='table-responsive'>
     <table class='table table-hover table-bordered'>
@@ -29,7 +34,7 @@
             {{$index + 1}}.
           </td>
           <td>
-            {{user.email}}
+            <a href="#/users/{{user.id}}">{{user.email}}</a>
           </td>
           <td>
             {{user.username}}
@@ -38,6 +43,7 @@
             {{user.created_at | date:'yyyy-MM-dd'}}
           </td>
           <td class='text-right'>
+            <a href="#/users/{{user.id}}" class='btn btn-info btn-xs'>Show</a>
             <a href="#/edit_user/{{user.id}}" class='btn btn-primary btn-xs'>Edit</a>
             <a ng-click="destroy(user, $index)" class='btn btn-danger btn-xs'>Delete</a>
           </td>
