@@ -27,6 +27,14 @@ angular.module('ToDoList')
       return $http.post('/tasks.json', { task: task_params })
     };
 
+    o.active_list = function() {
+      return $http.get('/tasks.json', { params: { tasks: 'active' }})
+    };
+
+    o.inactive_list = function() {
+      return $http.get('/tasks.json', { params: { tasks: 'inactive' }})
+    };
+
     return o;
   }
 ]);

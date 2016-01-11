@@ -1,17 +1,24 @@
 class TasksController < ApplicationController
   before_action :authenticate_user!
-  # before_action :set_task, only: [:show, :edit, :update, :destroy]
+  before_action :set_task, only: [:show, :edit, :update, :destroy]
 
   # GET /tasks
   # GET /tasks.json
   def index
-    @tasks = Task.order(completed: :asc)
+    if params[:tasks] == 'active'
+      @tasks = Task.active.order(completed: :asc)
+    elsif params[:tasks] == 'inactive'
+      @tasks = Task.inactive.order(completed: :asc)
+    else
+      @tasks = Task.order(completed: :asc)
+    end
     respond_with(@tasks)
   end
 
   # GET /tasks/1
   # GET /tasks/1.json
   def show
+    respond_with(task)
   end
 
   # GET /tasks/new
@@ -21,7 +28,6 @@ class TasksController < ApplicationController
 
   # GET /tasks/1/edit
   def edit
-    task = Task.find(params[:id])
     respond_with([task, task.user])
   end
 
@@ -35,21 +41,19 @@ class TasksController < ApplicationController
   # PATCH/PUT /tasks/1
   # PATCH/PUT /tasks/1.json
   def update
-    task = Task.find(params[:id])
     task.update(task_params) ? respond_with(task) : false
   end
 
   # DELETE /tasks/1
   # DELETE /tasks/1.json
   def destroy
-    task = Task.find(params[:id])
     task.destroy ? respond_with(task) : false
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_task
-      @task = Task.find(params[:id])
+      task = Task.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

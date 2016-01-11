@@ -10,6 +10,9 @@ class Task < ActiveRecord::Base
 
   enum status: [:active, :finished]
 
+  scope :active, -> { where(status: 0) }
+  scope :inactive, -> { where(status: 1) }
+
   private
     def update_status
       self.completed == 100 ? self.update_column(:status, 1) : self.update_column(:status, 0)

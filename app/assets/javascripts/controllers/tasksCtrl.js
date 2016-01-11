@@ -35,11 +35,11 @@ angular.module('ToDoList')
       $scope.user_id = $scope.task.user_id.id;
     };
     $scope.edit = function() {
-      Task.edit($scope.task.id).update({id: $scope.task.id,
+      Task.edit($scope.task.id).update({
                                         title: $scope.task.title,
                                         description: $scope.task.description,
                                         completed: $scope.task.completed,
-                                        user_id: $scope.task.user_id.id
+                                        user_id: $scope.user_id
         },
         function() {
           $state.go('tasks');
