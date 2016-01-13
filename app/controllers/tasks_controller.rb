@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: :index
   before_action :set_task, only: [:show, :edit, :update, :destroy]
 
   # GET /tasks
@@ -48,13 +48,13 @@ class TasksController < ApplicationController
   # PATCH/PUT /tasks/1
   # PATCH/PUT /tasks/1.json
   def update
-    task.update(task_params) ? respond_with(@task) : false
+    @task.update(task_params) ? respond_with(@task) : false
   end
 
   # DELETE /tasks/1
   # DELETE /tasks/1.json
   def destroy
-    task.destroy ? respond_with(@task) : false
+    @task.destroy ? respond_with(@task) : false
   end
 
   private

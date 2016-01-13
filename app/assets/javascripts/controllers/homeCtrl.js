@@ -2,8 +2,10 @@ angular.module('ToDoList')
 .controller('HomeCtrl', [
   '$scope',
   'Task',
-  function($scope, Task) {
+  'AppFactory',
+  function($scope, Task, AppFactory) {
     $scope.active_tasks = function() {
+      AppFactory.save();
       Task.active_list().success(function(response) {
         $scope.tasks = response;
         $('#active_tasks').addClass('active');

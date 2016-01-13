@@ -41,47 +41,119 @@ angular.module('ToDoList', ['ui.router', 'templates', 'Devise', 'ngResource'])
       .state('profile', {
         url: '/profile/:id',
         templateUrl: '/templates/_profile.html',
-        controller: 'UserCtrl'
+        controller: 'UserCtrl',
+        onEnter: ['$state', 'Auth', function($state, Auth) {
+          Auth.currentUser().then(function (){
+          }, function(error) {
+            $state.go('home');
+            alertify.error('You are not authorized.');
+          }
+          );
+        }]
       })
       .state('tasks', {
         url: '/tasks',
         templateUrl: '/templates/_tasks.html',
-        controller: 'TasksCtrl'
+        controller: 'TasksCtrl',
+        onEnter: ['$state', 'Auth', function($state, Auth) {
+          Auth.currentUser().then(function (){
+          }, function(error) {
+            $state.go('home');
+            alertify.error('You are not authorized.');
+          }
+          );
+        }]
       })
       .state('users', {
         url: '/users',
         templateUrl: '/templates/_users.html',
-        controller: 'UsersCtrl'
+        controller: 'UsersCtrl',
+        onEnter: ['$state', 'Auth', function($state, Auth) {
+          Auth.currentUser().then(function (){
+          }, function(error) {
+            $state.go('home');
+            alertify.error('You are not authorized.');
+          }
+          );
+        }]
       })
       .state('edit_user', {
         url: '/edit_user/:id',
         templateUrl: 'templates/_edit_user.html',
-        controller: 'UserCtrl'
+        controller: 'UserCtrl',
+        onEnter: ['$state', 'Auth', function($state, Auth) {
+          Auth.currentUser().then(function (){
+          }, function(error) {
+            $state.go('home');
+            alertify.error('You are not authorized.');
+          }
+          );
+        }]
       })
       .state('edit_task', {
         url: '/edit_task/:id',
         templateUrl: 'templates/_edit_task.html',
-        controller: 'TasksCtrl'
+        controller: 'TasksCtrl',
+        onEnter: ['$state', 'Auth', function($state, Auth) {
+          Auth.currentUser().then(function (){
+          }, function(error) {
+            $state.go('home');
+            alertify.error('You are not authorized.');
+          }
+          );
+        }]
       })
       .state('new_task', {
         url: '/tasks/new',
         templateUrl: 'templates/_new_task.html',
-        controller: 'TasksCtrl'
+        controller: 'TasksCtrl',
+        onEnter: ['$state', 'Auth', function($state, Auth) {
+          Auth.currentUser().then(function (){
+          }, function(error) {
+            $state.go('home');
+            alertify.error('You are not authorized.');
+          }
+          );
+        }]
       })
       .state('show_task', {
         url: '/tasks/:id',
         templateUrl: 'templates/_show_task.html',
-        controller: 'TasksCtrl'
+        controller: 'TasksCtrl',
+        onEnter: ['$state', 'Auth', function($state, Auth) {
+          Auth.currentUser().then(function (){
+          }, function(error) {
+            $state.go('home');
+            alertify.error('You are not authorized.');
+          }
+          );
+        }]
       })
       .state('new_user', {
         url: '/users/new',
         templateUrl: 'templates/_new_user.html',
-        controller: 'UsersCtrl'
+        controller: 'UsersCtrl',
+        onEnter: ['$state', 'Auth', function($state, Auth) {
+          Auth.currentUser().then(function (){
+          }, function(error) {
+            $state.go('home');
+            alertify.error('You are not authorized.');
+          }
+          );
+        }]
       })
       .state('show_user', {
         url: '/users/:id',
         templateUrl: 'templates/_show_user.html',
-        controller: 'UserCtrl'
+        controller: 'UserCtrl',
+        onEnter: ['$state', 'Auth', function($state, Auth) {
+          Auth.currentUser().then(function (){
+          }, function(error) {
+            $state.go('home');
+            alertify.error('You are not authorized.');
+          }
+          );
+        }]
       })
       ;
 

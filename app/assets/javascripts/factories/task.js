@@ -39,6 +39,10 @@ angular.module('ToDoList')
       return $http.get('/tasks/' + id + '.json', {})
     };
 
+    o.active_stats = function(id) {
+      return $http.get('/users/' + id + '/active_stats.json', {})
+    };
+
     return o;
   }
 ]);

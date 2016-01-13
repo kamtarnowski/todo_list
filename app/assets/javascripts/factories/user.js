@@ -29,6 +29,10 @@ angular.module('ToDoList')
       return $http.post('/users.json', { user: user_params })
     };
 
+    o.global_stats = function(id) {
+      return $http.get('/users/' + id + '/global_stats', {})
+    };
+
     return o;
   }
 ]);

@@ -47,9 +47,15 @@
             {{task.status}}
           </td>
           <td>
-            {{task.completed}}%
+            <div class="progress">
+             <div class="progress-bar" role="progressbar" aria-valuenow="{{task.completed}}"
+             aria-valuemin="0" aria-valuemax="100" style="width:{{task.completed}}%">
+               {{task.completed}}%
+             </div>
+            </div>
           </td>
           <td class='text-right'>
+            <a href="#/tasks/{{task.id}}" class='btn btn-info btn-xs'>Show</a>
             <a href="#/edit_task/{{task.id}}" class='btn btn-primary btn-xs'>Edit</a>
             <a ng-click="destroy(task, $index)" class='btn btn-danger btn-xs'>Delete</a>
           </td>

@@ -7,4 +7,8 @@ class User < ActiveRecord::Base
   has_many :tasks, dependent: :nullify
 
   validates :username, presence: true
+
+  def self.global_stats
+    return [self.tasks.active.size, self.tasks.inactive.size]
+  end
 end

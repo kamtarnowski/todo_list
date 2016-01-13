@@ -6,5 +6,6 @@
 //= require angular-ui-router
 //= require angular-resource
 //= require alertifyjs
+//= require Chart.js/Chart.js
 //= require bootstrap-sass-official
 //= require_tree .

@@ -25,7 +25,12 @@
         Completed in:
       </td>
       <td>
-        {{task.completed}}%
+        <div class="progress">
+         <div class="progress-bar" role="progressbar" aria-valuenow="{{task.completed}}"
+         aria-valuemin="0" aria-valuemax="100" style="width:{{task.completed}}%">
+           {{task.completed}}%
+         </div>
+        </div>
       </td>
     </tr>
     <tr ng-show="user">
@@ -43,5 +48,6 @@
     </tr>
   </table>
 
-  <a href="#/tasks" class="btn btn-default">Back</a>
+  <a href="#/tasks" class="btn btn-default" ng-hide="back_url">Back</a>
+  <a href="{{back_url}}" class="btn btn-default" ng-show="back_url">Back</a>
 </div>

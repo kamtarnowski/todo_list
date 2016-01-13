@@ -5,7 +5,8 @@ angular.module('ToDoList')
   '$stateParams',
   'User',
   '$state',
-  function($scope, Task, $stateParams, User, $state) {
+  'AppFactory',
+  function($scope, Task, $stateParams, User, $state, AppFactory) {
     $scope.tasks = function() {
       Task.index().success(function(response) {
         $scope.tasks = response;
@@ -74,6 +75,8 @@ angular.module('ToDoList')
       });
     };
     $scope.show = function() {
+      $scope.back_url = AppFactory.get_url();
+      AppFactory.delete_url();
       Task.show($stateParams.id).success(function(response) {
         $scope.task = response[0];
         $scope.user = response[1];

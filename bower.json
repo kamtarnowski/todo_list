@@ -23,6 +23,7 @@
     "bootstrap-sass-official": "",
     "font-awesome": "",
     "angular-devise": "",
-    "alertifyjs": ""
+    "alertifyjs": "",
+    "Chart.js": ""
   }
 }

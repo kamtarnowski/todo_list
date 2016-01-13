@@ -28,10 +28,10 @@
 
   <ul class="nav nav-tabs" ng-show="active_tasks || inactive_tasks">
     <li class='active' id='active_tasks'>
-      <a ng-click="tab_active_tasks()">Active</a>
+      <a ng-click="tab_active_tasks()" href=''>Active</a>
     </li>
     <li id='inactive_tasks'>
-      <a ng-click="tab_inactive_tasks()">Finished</a>
+      <a ng-click="tab_inactive_tasks()" href=''>Finished</a>
     </li>
   </ul>
 
@@ -71,10 +71,15 @@
                 {{task.description}}
               </td>
               <td>
-                {{task.completed}}%
+                <div class="progress">
+                 <div class="progress-bar" role="progressbar" aria-valuenow="{{task.completed}}"
+                 aria-valuemin="0" aria-valuemax="100" style="width:{{task.completed}}%">
+                   {{task.completed}}%
+                 </div>
+                </div>
               </td>
               <td class='text-right'>
-                <a href="#/tasks/{{task.id}}" class='btn btn-primary btn-xs'>Show</a>
+                <a href="#/tasks/{{task.id}}" class='btn btn-info btn-xs'>Show</a>
               </td>
             </tr>
           </tbody>
@@ -117,7 +122,12 @@
                 {{task.description}}
               </td>
               <td>
-                {{task.completed}}%
+                <div class="progress">
+                 <div class="progress-bar" role="progressbar" aria-valuenow="{{task.completed}}"
+                 aria-valuemin="0" aria-valuemax="100" style="width:{{task.completed}}%">
+                   {{task.completed}}%
+                 </div>
+                </div>
               </td>
               <td class='text-right'>
                 <a href="#/tasks/{{task.id}}" class='btn btn-primary btn-xs'>Show</a>
@@ -128,6 +138,26 @@
       </div>
     </div>
   </div>
+
+  <div class='row'>
+    <div class="col-md-6">
+      <h2>Statistics</h2>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <hr>
+      <h4>Active - Finished ratio</h4>
+      <canvas id="global_stats" width="400" height="300"></canvas>
+    </div>
+    <div class="col-md-6">
+      <hr>
+      <h4>Active tasks ratio</h4>
+      <canvas id="active_stats" width="400" height="300"></canvas>
+    </div>
+  </div>
+
   <br>
   <a href="#/users" class="btn btn-default">Back</a>
 </div>

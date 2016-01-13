@@ -1,9 +1,7 @@
 angular.module('ToDoList')
 .factory('AppFactory', [
   function() {
-    var o = {
-      url: []
-    };
+    var o = [];
 
     o.get_url = function() {
       return o.url;
@@ -12,6 +10,10 @@ angular.module('ToDoList')
     o.save = function() {
       o.url = [];
       return o.url = window.location.href;
+    };
+
+    o.delete_url = function() {
+      o.url = [];
     };
 
     return o;

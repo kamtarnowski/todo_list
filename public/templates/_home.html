@@ -1,10 +1,10 @@
 <div class="container margin-navbar" ng-init='active_tasks()'>
   <ul class="nav nav-tabs">
     <li class='active' id='active_tasks'>
-      <a ng-click="active_tasks()">Active</a>
+      <a ng-click="active_tasks()" href=''>Active</a>
     </li>
     <li id='inactive_tasks'>
-      <a ng-click="inactive_tasks()">Finished</a>
+      <a ng-click="inactive_tasks()" href=''>Finished</a>
     </li>
   </ul>
 
@@ -44,10 +44,15 @@
                 {{task.description}}
               </td>
               <td>
-                {{task.completed}}%
+                <div class="progress">
+                 <div class="progress-bar" role="progressbar" aria-valuenow="{{task.completed}}"
+                 aria-valuemin="0" aria-valuemax="100" style="width:{{task.completed}}%">
+                   {{task.completed}}%
+                 </div>
+                </div>
               </td>
               <td class='text-right'>
-                <a href="#/tasks/{{task.id}}" class='btn btn-primary btn-xs'>Show</a>
+                <a href="#/tasks/{{task.id}}" class='btn btn-info btn-xs'>Show</a>
               </td>
             </tr>
           </tbody>
@@ -90,7 +95,12 @@
                 {{task.description}}
               </td>
               <td>
-                {{task.completed}}%
+                <div class="progress">
+                 <div class="progress-bar" role="progressbar" aria-valuenow="{{task.completed}}"
+                 aria-valuemin="0" aria-valuemax="100" style="width:{{task.completed}}%">
+                   {{task.completed}}%
+                 </div>
+                </div>
               </td>
               <td class='text-right'>
                 <a href="#/tasks/{{task.id}}" class='btn btn-primary btn-xs'>Show</a>
