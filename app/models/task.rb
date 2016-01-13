@@ -15,6 +15,10 @@ class Task < ActiveRecord::Base
 
   private
     def update_status
-      self.completed == 100 ? self.update_column(:status, 1) : self.update_column(:status, 0)
+      if self.completed == 100
+        self.update_column(:status, 1)
+      else
+        self.update_column(:status, 0)
+      end
     end
 end
