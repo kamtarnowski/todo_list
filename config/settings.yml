@@ -1,0 +1,6 @@
+defaults: &defaults
+  smtp_user: "todolist.angular@gmail.com"
+  smtp_password: "todolistangular"
+
+development:
+  <<: *defaults

@@ -16,7 +16,12 @@ class Task < ActiveRecord::Base
   private
     def update_status
       if self.completed == 100
-        self.update_column(:status, 1)
+        if self.user.present?
+          TaskWorker.perform_async(self.user.id, self.title)
+          self.update_column(:status, 1)
+        else
+          self.update_column(:status, 1)
+        end
       else
         self.update_column(:status, 0)
       end

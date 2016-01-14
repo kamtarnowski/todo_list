@@ -62,41 +62,22 @@ angular.module('ToDoList')
           $scope.fourth_scope = response[3];
           $scope.fifth_scope = response[4];
 
-          var data = [
+          var data = {
+            labels: ["0-20%", "21-40%", "41-60%", "61-80%", "81-99%"],
+            datasets: [
               {
-                  value: $scope.first_scope,
-                  color:"#ff0000",
-                  highlight: "#ff6666",
-                  label: "1-20%"
-              },
-              {
-                  value: $scope.second_scope,
-                  color: "#ff8000",
-                  highlight: "#ffa64d",
-                  label: "21-40%"
-              },
-              {
-                  value: $scope.third_scope,
-                  color: "#ffcc99",
-                  highlight: "#ffe6cc",
-                  label: "41-60%"
-              },
-              {
-                  value: $scope.fourth_scope,
-                  color: "#aaff00",
-                  highlight: "#c3ff4d",
-                  label: "61-80%"
-              },
-              {
-                  value: $scope.fifth_scope,
-                  color: "#00ff00",
-                  highlight: "#66ff66",
-                  label: "81-100%"
+                  label: "Active tasks ratio",
+                  fillColor: "rgba(220,220,220,0.5)",
+                  strokeColor: "rgba(220,220,220,0.8)",
+                  highlightFill: "rgba(220,220,220,0.75)",
+                  highlightStroke: "rgba(220,220,220,1)",
+                  data: [$scope.first_scope, $scope.second_scope, $scope.third_scope, $scope.fourth_scope, $scope.fifth_scope]
               }
-          ]
+            ]
+          }
 
           var ctx = document.getElementById("active_stats").getContext("2d");
-          var myDoughnutChart = new Chart(ctx).Doughnut(data);
+          var myBarChart = new Chart(ctx).Bar(data);
         });
       })
       .error(function() {
