@@ -1,5 +1,6 @@
 class Task < ActiveRecord::Base
   belongs_to :user
+  belongs_to :category
 
   after_create :update_status
   after_update :update_status

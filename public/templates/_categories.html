@@ -1,0 +1,38 @@
+<div class='container' ng-init="index()" ng-show="visible">
+  <div class="page-header">
+    <h1>
+      Categories
+    </h1>
+  </div>
+
+  <div class='table-responsive'>
+    <table class='table table-hover table-bordered'>
+      <thead>
+        <tr>
+          <th>
+            No.
+          </th>
+          <th>
+            Name
+          </th>
+          <th class='text-right'>
+            Actions
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="category in categories | orderBy: name">
+          <td>
+            {{$index + 1}}.
+          </td>
+          <td>
+            {{category.name}}
+          </td>
+          <td class='text-right'>
+            <a ng-click="destroy(task, $index)" class='btn btn-danger btn-xs'>Delete</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

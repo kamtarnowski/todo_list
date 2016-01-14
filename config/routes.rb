@@ -7,4 +7,5 @@ Rails.application.routes.draw do
     get :active_stats, on: :member
   end
   resources :tasks
+  resources :categories
 end

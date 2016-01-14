@@ -3,8 +3,10 @@ angular.module('ToDoList')
   '$scope',
   'Task',
   'AppFactory',
-  function($scope, Task, AppFactory) {
+  'Auth',
+  function($scope, Task, AppFactory, Auth) {
     $scope.active_tasks = function() {
+      Auth.currentUser().then(function() {});
       AppFactory.save();
       Task.active_list().success(function(response) {
         $scope.tasks = response;

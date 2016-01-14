@@ -1,3 +1,4 @@
+Category.destroy_all
 Task.destroy_all
 User.destroy_all
 
@@ -17,6 +18,10 @@ end
   Task.create(completed: 100, status: 1, title: FFaker::Lorem.word, description: FFaker::Lorem.sentence)
 end
 
-##################################################################
+########################### Categories #################################
+10.times do
+  Category.create(name: FFaker::Lorem.word)
+end
+
 ##################################################################
 ##################################################################

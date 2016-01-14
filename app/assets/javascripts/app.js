@@ -83,6 +83,11 @@ angular.module('ToDoList', ['ui.router', 'templates', 'Devise', 'ngResource'])
         templateUrl: 'templates/_show_user.html',
         controller: 'UserCtrl'
       })
+      .state('categories', {
+        url: '/categories',
+        templateUrl: 'templates/_categories.html',
+        controller: 'CategoryCtrl'
+      })
       ;
 
     $urlRouterProvider.otherwise('home');
