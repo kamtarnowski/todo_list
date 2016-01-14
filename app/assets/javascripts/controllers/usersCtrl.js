@@ -4,7 +4,15 @@ angular.module('ToDoList')
   'User',
   'AppFactory',
   '$state',
-  function($scope, User, AppFactory, $state) {
+  'Auth',
+  function($scope, User, AppFactory, $state, Auth) {
+    Auth.currentUser().then(function() {
+      $scope.visible = true;
+    }, function(error) {
+      $scope.visible = false;
+      $state.go('home');
+      alertify.error('You are not authorized.');
+    });
     AppFactory.save();
     $scope.index = function() {
       User.index().success(function(response) {

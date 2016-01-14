@@ -7,7 +7,15 @@ angular.module('ToDoList')
   '$state',
   '$window',
   'Task',
-  function(AppFactory, $scope, User, $stateParams, $state, $window, Task) {
+  'Auth',
+  function(AppFactory, $scope, User, $stateParams, $state, $window, Task, Auth) {
+    Auth.currentUser().then(function() {
+      $scope.visible = true;
+    }, function(error) {
+      $scope.visible = false;
+      $state.go('home');
+      alertify.error('You are not authorized.');
+    });
     $scope.edit_user = function() {
       User.get_user($stateParams.id).success(function(response) {
         $scope.user = response;
