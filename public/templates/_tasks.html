@@ -30,12 +30,15 @@
           <th>
             Completed
           </th>
+          <th>
+            Category
+          </th>
           <th class='text-right'>
             Actions
           </th>
         </tr>
       </thead>
-      <tbody>
+      <!-- <tbody>
         <tr ng-repeat="task in tasks | orderBy: status">
           <td>
             {{$index + 1}}.
@@ -57,10 +60,52 @@
              </div>
             </div>
           </td>
+          <td ng-show="task.category">
+            {{task.category.name}}
+          </td>
+          <td class="text-center" ng-hide="task.category">
+            -
+          </td>
           <td class='text-right'>
             <a href="#/tasks/{{task.id}}" class='btn btn-info btn-xs'>Show</a>
             <a href="#/edit_task/{{task.id}}" class='btn btn-primary btn-xs'>Edit</a>
             <a ng-click="destroy(task, $index)" class='btn btn-danger btn-xs'>Delete</a>
+          </td>
+        </tr>
+      </tbody> -->
+
+      <tbody>
+        <tr ng-repeat="n in tasks | orderBy: status">
+          <td>
+            {{$index + 1}}.
+          </td>
+          <td>
+            <a href="#/tasks/{{n[0].id}}">{{n[0].title}}</a>
+          </td>
+          <td>
+            {{n[0].description}}
+          </td>
+          <td>
+            {{n[0].status}}
+          </td>
+          <td>
+            <div class="progress">
+             <div class="progress-bar" role="progressbar" aria-valuenow="{{n[0].completed}}"
+             aria-valuemin="0" aria-valuemax="100" style="width:{{n[0].completed}}%">
+               {{n[0].completed}}%
+             </div>
+            </div>
+          </td>
+          <td ng-show="n[1]">
+            {{n[1]}}
+          </td>
+          <td class="text-center" ng-hide="n[1]">
+            -
+          </td>
+          <td class='text-right'>
+            <a href="#/tasks/{{n[0].id}}" class='btn btn-info btn-xs'>Show</a>
+            <a href="#/edit_task/{{n[0].id}}" class='btn btn-primary btn-xs'>Edit</a>
+            <a ng-click="destroy(n[0], $index)" class='btn btn-danger btn-xs'>Delete</a>
           </td>
         </tr>
       </tbody>

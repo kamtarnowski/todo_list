@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160114165838) do
+ActiveRecord::Schema.define(version: 20160115073725) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,8 +32,10 @@ ActiveRecord::Schema.define(version: 20160114165838) do
     t.text     "description"
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
+    t.integer  "category_id"
   end
 
+  add_index "tasks", ["category_id"], name: "index_tasks_on_category_id", using: :btree
   add_index "tasks", ["completed"], name: "index_tasks_on_completed", using: :btree
   add_index "tasks", ["status"], name: "index_tasks_on_status", using: :btree
   add_index "tasks", ["title"], name: "index_tasks_on_title", using: :btree
@@ -61,6 +63,7 @@ ActiveRecord::Schema.define(version: 20160114165838) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree
 
+  add_foreign_key "tasks", "categories"
   add_foreign_key "tasks", "users"
   add_foreign_key "users", "categories"
 end

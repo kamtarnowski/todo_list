@@ -36,8 +36,16 @@
           </td>
           <td>
             {{username}}
-            <select ng-model="task.user_id" ng-options="user.username for user in users" ng-change="selected()"></select>
-            <input type="number" value="{{user_id}}" hidden>
+            <select ng-model='task.user' ng-options="user.username for user in users" value="{{user.username}}"></select>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Category:
+          </td>
+          <td>
+            <span ng-show="task.category">{{task.category.name}}</span>
+            <select ng-model='task.category' ng-options="category.name for category in categories" value="{{category.name}}"></select>
           </td>
         </tr>
       </table>

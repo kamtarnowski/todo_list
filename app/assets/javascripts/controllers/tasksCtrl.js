@@ -7,7 +7,8 @@ angular.module('ToDoList')
   '$state',
   'AppFactory',
   "Auth",
-  function($scope, Task, $stateParams, User, $state, AppFactory, Auth) {
+  'Category',
+  function($scope, Task, $stateParams, User, $state, AppFactory, Auth, Category) {
     Auth.currentUser().then(function() {
       $scope.visible = true;
     }, function(error) {
@@ -73,7 +74,8 @@ angular.module('ToDoList')
       Task.new({title: $scope.task.title,
                 description: $scope.task.description,
                 completed: $scope.task.completed,
-                user_id: $scope.user_id})
+                user_id: $scope.task.user.id,
+                category_id: $scope.task.category.id})
       .success(function() {
         $state.go('tasks');
         alertify.success('Task has been succesfully created.')
@@ -93,6 +95,14 @@ angular.module('ToDoList')
         }
       }).error(function() {
         alertify.error("Error has occured.");
+      });
+    };
+    $scope.categories = function() {
+      Category.index().success(function(response) {
+        $scope.categories = response;
+      })
+      .error(function() {
+        $scope.categories = [];
       });
     };
   }

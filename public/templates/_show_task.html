@@ -20,6 +20,14 @@
         {{task.status}}
       </td>
     </tr>
+    <tr ng-show="task.category_id">
+      <td class='col-md-2'>
+        Category:
+      </td>
+      <td>
+        {{task.category.name}}
+      </td>
+    </tr>
     <tr>
       <td class='col-md-2'>
         Completed in:

@@ -12,7 +12,9 @@ class TasksController < ApplicationController
     else
       @tasks = Task.order(completed: :asc)
     end
-    respond_with(@tasks)
+    array = @tasks.task_and_category
+    render json: array
+    # respond_with(array)
   end
 
   # GET /tasks/1
@@ -65,6 +67,6 @@ class TasksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def task_params
-      params.require(:task).permit(:id, :completed, :user_id, :title, :description)
+      params.require(:task).permit(:completed, :user_id, :title, :description, :category_id)
     end
 end

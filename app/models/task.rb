@@ -14,6 +14,14 @@ class Task < ActiveRecord::Base
   scope :active, -> { where(status: 0) }
   scope :inactive, -> { where(status: 1) }
 
+  def self.task_and_category
+    array = []
+    self.select do |t|
+      array << [t, t.try(:category).try(:name)]
+    end
+    return array
+  end
+
   private
     def update_status
       if self.completed == 100
