@@ -18,7 +18,6 @@ angular.module('ToDoList')
     });
     $scope.edit_user = function() {
       User.get_user($stateParams.id).success(function(response) {
-        console.log(response);
         $scope.user = response;
         $scope.staticUsername = $scope.user.username;
       })
