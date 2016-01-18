@@ -1,6 +1,7 @@
 class Task < ActiveRecord::Base
   belongs_to :user
   belongs_to :category
+  has_one :album, dependent: :destroy
 
   after_create :update_status
   after_update :update_status
