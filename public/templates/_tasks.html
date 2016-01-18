@@ -38,42 +38,6 @@
           </th>
         </tr>
       </thead>
-      <!-- <tbody>
-        <tr ng-repeat="task in tasks | orderBy: status">
-          <td>
-            {{$index + 1}}.
-          </td>
-          <td>
-            <a href="#/tasks/{{task.id}}">{{task.title}}</a>
-          </td>
-          <td>
-            {{task.description}}
-          </td>
-          <td>
-            {{task.status}}
-          </td>
-          <td>
-            <div class="progress">
-             <div class="progress-bar" role="progressbar" aria-valuenow="{{task.completed}}"
-             aria-valuemin="0" aria-valuemax="100" style="width:{{task.completed}}%">
-               {{task.completed}}%
-             </div>
-            </div>
-          </td>
-          <td ng-show="task.category">
-            {{task.category.name}}
-          </td>
-          <td class="text-center" ng-hide="task.category">
-            -
-          </td>
-          <td class='text-right'>
-            <a href="#/tasks/{{task.id}}" class='btn btn-info btn-xs'>Show</a>
-            <a href="#/edit_task/{{task.id}}" class='btn btn-primary btn-xs'>Edit</a>
-            <a ng-click="destroy(task, $index)" class='btn btn-danger btn-xs'>Delete</a>
-          </td>
-        </tr>
-      </tbody> -->
-
       <tbody>
         <tr ng-repeat="n in tasks | orderBy: status">
           <td>

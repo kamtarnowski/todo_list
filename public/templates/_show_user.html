@@ -26,138 +26,139 @@
     </div>
   </div>
 
-  <ul class="nav nav-tabs" ng-show="active_tasks || inactive_tasks">
-    <li class='active' id='active_tasks'>
-      <a ng-click="tab_active_tasks()" href=''>Active</a>
-    </li>
-    <li id='inactive_tasks'>
-      <a ng-click="tab_inactive_tasks()" href=''>Finished</a>
-    </li>
-  </ul>
+  <div ng-show="active_tasks > 0 || inactive_tasks > 0">
+    <ul class="nav nav-tabs">
+      <li class='active' id='active_tasks'>
+        <a ng-click="tab_active_tasks()" href=''>Active</a>
+      </li>
+      <li id='inactive_tasks'>
+        <a ng-click="tab_inactive_tasks()" href=''>Finished</a>
+      </li>
+    </ul>
 
-  <div class="tab-content" ng-show="active_tasks || inactive_tasks">
-    <div id="tab_active_tasks" class="tab-pane">
-      <br>
-      <div class='table-responsive'>
-        <table class='table table-hover table-bordered'>
-          <thead>
-            <tr>
-              <th>
-                No.
-              </th>
-              <th>
-                Title
-              </th>
-              <th>
-                Description
-              </th>
-              <th>
-                Completed
-              </th>
-              <th class='text-right'>
-                Actions
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr ng-repeat="task in active_tasks | orderBy: completed">
-              <td>
-                {{$index + 1}}.
-              </td>
-              <td>
-                <a href="#/tasks/{{task.id}}">{{task.title}}</a>
-              </td>
-              <td>
-                {{task.description}}
-              </td>
-              <td>
-                <div class="progress">
-                 <div class="progress-bar" role="progressbar" aria-valuenow="{{task.completed}}"
-                 aria-valuemin="0" aria-valuemax="100" style="width:{{task.completed}}%">
-                   {{task.completed}}%
-                 </div>
-                </div>
-              </td>
-              <td class='text-right'>
-                <a href="#/tasks/{{task.id}}" class='btn btn-info btn-xs'>Show</a>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+    <div class="tab-content">
+      <div id="tab_active_tasks" class="tab-panel">
+        <br>
+        <div class='table-responsive'>
+          <table class='table table-hover table-bordered'>
+            <thead>
+              <tr>
+                <th>
+                  No.
+                </th>
+                <th>
+                  Title
+                </th>
+                <th>
+                  Description
+                </th>
+                <th>
+                  Completed
+                </th>
+                <th class='text-right'>
+                  Actions
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="task in active_tasks | orderBy: completed">
+                <td>
+                  {{$index + 1}}.
+                </td>
+                <td>
+                  <a href="#/tasks/{{task.id}}">{{task.title}}</a>
+                </td>
+                <td>
+                  {{task.description}}
+                </td>
+                <td>
+                  <div class="progress">
+                   <div class="progress-bar" role="progressbar" aria-valuenow="{{task.completed}}"
+                   aria-valuemin="0" aria-valuemax="100" style="width:{{task.completed}}%">
+                     {{task.completed}}%
+                   </div>
+                  </div>
+                </td>
+                <td class='text-right'>
+                  <a href="#/tasks/{{task.id}}" class='btn btn-info btn-xs'>Show</a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div id="tab_inactive_tasks" class="tab-panel">
+        <br>
+        <div class='table-responsive'>
+          <table class='table table-hover table-bordered'>
+            <thead>
+              <tr>
+                <th>
+                  No.
+                </th>
+                <th>
+                  Title
+                </th>
+                <th>
+                  Description
+                </th>
+                <th>
+                  Completed
+                </th>
+                <th class='text-right'>
+                  Actions
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="task in inactive_tasks">
+                <td>
+                  {{$index + 1}}.
+                </td>
+                <td>
+                  <a href="#/tasks/{{task.id}}">{{task.title}}</a>
+                </td>
+                <td>
+                  {{task.description}}
+                </td>
+                <td>
+                  <div class="progress">
+                   <div class="progress-bar" role="progressbar" aria-valuenow="{{task.completed}}"
+                   aria-valuemin="0" aria-valuemax="100" style="width:{{task.completed}}%">
+                     {{task.completed}}%
+                   </div>
+                  </div>
+                </td>
+                <td class='text-right'>
+                  <a href="#/tasks/{{task.id}}" class='btn btn-info btn-xs'>Show</a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
 
-    <div id="tab_inactive_tasks" class="tab-pane">
-      <br>
-      <div class='table-responsive'>
-        <table class='table table-hover table-bordered'>
-          <thead>
-            <tr>
-              <th>
-                No.
-              </th>
-              <th>
-                Title
-              </th>
-              <th>
-                Description
-              </th>
-              <th>
-                Completed
-              </th>
-              <th class='text-right'>
-                Actions
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr ng-repeat="task in inactive_tasks">
-              <td>
-                {{$index + 1}}.
-              </td>
-              <td>
-                <a href="#/tasks/{{task.id}}">{{task.title}}</a>
-              </td>
-              <td>
-                {{task.description}}
-              </td>
-              <td>
-                <div class="progress">
-                 <div class="progress-bar" role="progressbar" aria-valuenow="{{task.completed}}"
-                 aria-valuemin="0" aria-valuemax="100" style="width:{{task.completed}}%">
-                   {{task.completed}}%
-                 </div>
-                </div>
-              </td>
-              <td class='text-right'>
-                <a href="#/tasks/{{task.id}}" class='btn btn-info btn-xs'>Show</a>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+    <div class='row'>
+      <div class="col-md-6">
+        <h2>Statistics</h2>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
+        <hr>
+        <h4>Active - Finished ratio</h4>
+        <canvas id="global_stats" width="400" height="300"></canvas>
+      </div>
+      <div class="col-md-6">
+        <hr>
+        <h4>Active tasks ratio</h4>
+        <canvas id="active_stats" width="400" height="300"></canvas>
       </div>
     </div>
   </div>
-
-  <div class='row'>
-    <div class="col-md-6">
-      <h2>Statistics</h2>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-md-6">
-      <hr>
-      <h4>Active - Finished ratio</h4>
-      <canvas id="global_stats" width="400" height="300"></canvas>
-    </div>
-    <div class="col-md-6">
-      <hr>
-      <h4>Active tasks ratio</h4>
-      <canvas id="active_stats" width="400" height="300"></canvas>
-    </div>
-  </div>
-
   <br>
   <br>
   <a href="#/users" class="btn btn-default">Back</a>

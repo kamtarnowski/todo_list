@@ -1,4 +1,4 @@
-<div class='container' ng-init='search_task(); users()' ng-show="visible">
+<div class='container' ng-init='search_task(); users(); categories()' ng-show="visible">
   <div class="page-header">
     <h1>Edit: {{fixed_title}}</h1>
   </div>
@@ -35,7 +35,7 @@
             User:
           </td>
           <td>
-            {{username}}
+            {{fixed_user.username}}
             <select ng-model='task.user' ng-options="user.username for user in users" value="{{user.username}}"></select>
           </td>
         </tr>
@@ -44,7 +44,7 @@
             Category:
           </td>
           <td>
-            <span ng-show="task.category">{{task.category.name}}</span>
+            {{fixed_category.name}}
             <select ng-model='task.category' ng-options="category.name for category in categories" value="{{category.name}}"></select>
           </td>
         </tr>

@@ -21,11 +21,12 @@ class TasksController < ApplicationController
   # GET /tasks/1.json
   def show
     if @task.user.present?
-      array = @task.user.tasks.pluck(:id)
-      array.delete(params[:id].to_i)
+      array = @task.user.tasks.to_a
+      task_to_delete = Task.find(params[:id])
+      array.delete(task_to_delete)
       random_user_tasks = array.sample(2)
     end
-    array = [@task, @task.user, random_user_tasks]
+    array = [@task, @task.user, random_user_tasks, @task.category]
     render json: array
     # respond_with(array)
   end
@@ -37,7 +38,7 @@ class TasksController < ApplicationController
 
   # GET /tasks/1/edit
   def edit
-    respond_with([@task, @task.user])
+    respond_with([@task, @task.user, @task.category])
   end
 
   # POST /tasks
@@ -50,6 +51,7 @@ class TasksController < ApplicationController
   # PATCH/PUT /tasks/1
   # PATCH/PUT /tasks/1.json
   def update
+    binding.pry
     @task.update(task_params) ? respond_with(@task) : false
   end
 

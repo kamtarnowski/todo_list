@@ -9,7 +9,7 @@
   </ul>
 
   <div class="tab-content">
-    <div id="tab_active_tasks" class="tab-pane">
+    <div id="tab_active_tasks" class="tab-panel">
       <br>
       <div class='table-responsive'>
         <table class='table table-hover table-bordered'>
@@ -27,6 +27,9 @@
               <th>
                 Completed
               </th>
+              <th>
+                Category
+              </th>
               <th class='text-right'>
                 Actions
               </th>
@@ -38,21 +41,27 @@
                 {{$index + 1}}.
               </td>
               <td>
-                <a href="#/tasks/{{task.id}}">{{task.title}}</a>
+                <a href="#/tasks/{{task[0].id}}">{{task[0].title}}</a>
               </td>
               <td>
-                {{task.description}}
+                {{task[0].description}}
               </td>
               <td>
                 <div class="progress">
-                 <div class="progress-bar" role="progressbar" aria-valuenow="{{task.completed}}"
-                 aria-valuemin="0" aria-valuemax="100" style="width:{{task.completed}}%">
-                   {{task.completed}}%
+                 <div class="progress-bar" role="progressbar" aria-valuenow="{{task[0].completed}}"
+                 aria-valuemin="0" aria-valuemax="100" style="width:{{task[0].completed}}%">
+                   {{task[0].completed}}%
                  </div>
                 </div>
               </td>
+              <td ng-show="task[1]">
+                {{n[1]}}
+              </td>
+              <td class="text-center" ng-hide="task[1]">
+                -
+              </td>
               <td class='text-right'>
-                <a href="#/tasks/{{task.id}}" class='btn btn-info btn-xs'>Show</a>
+                <a href="#/tasks/{{task[0].id}}" class='btn btn-info btn-xs'>Show</a>
               </td>
             </tr>
           </tbody>
@@ -60,7 +69,7 @@
       </div>
     </div>
 
-    <div id="tab_inactive_tasks" class="tab-pane">
+    <div id="tab_inactive_tasks" class="tab-panel">
       <br>
       <div class='table-responsive'>
         <table class='table table-hover table-bordered'>
@@ -78,6 +87,9 @@
               <th>
                 Completed
               </th>
+              <th>
+                Category
+              </th>
               <th class='text-right'>
                 Actions
               </th>
@@ -89,21 +101,27 @@
                 {{$index + 1}}.
               </td>
               <td>
-                <a href="#/tasks/{{task.id}}">{{task.title}}</a>
+                <a href="#/tasks/{{task[0].id}}">{{task[0].title}}</a>
               </td>
               <td>
-                {{task.description}}
+                {{task[0].description}}
               </td>
               <td>
                 <div class="progress">
-                 <div class="progress-bar" role="progressbar" aria-valuenow="{{task.completed}}"
-                 aria-valuemin="0" aria-valuemax="100" style="width:{{task.completed}}%">
-                   {{task.completed}}%
+                 <div class="progress-bar" role="progressbar" aria-valuenow="{{task[0].completed}}"
+                 aria-valuemin="0" aria-valuemax="100" style="width:{{task[0].completed}}%">
+                   {{task[0].completed}}%
                  </div>
                 </div>
               </td>
+              <td ng-show="task[1]">
+                {{n[1]}}
+              </td>
+              <td class="text-center" ng-hide="task[1]">
+                -
+              </td>
               <td class='text-right'>
-                <a href="#/tasks/{{task.id}}" class='btn btn-primary btn-xs'>Show</a>
+                <a href="#/tasks/{{task[0].id}}" class='btn btn-primary btn-xs'>Show</a>
               </td>
             </tr>
           </tbody>

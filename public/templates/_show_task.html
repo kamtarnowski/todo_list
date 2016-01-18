@@ -20,14 +20,6 @@
         {{task.status}}
       </td>
     </tr>
-    <tr ng-show="task.category_id">
-      <td class='col-md-2'>
-        Category:
-      </td>
-      <td>
-        {{task.category.name}}
-      </td>
-    </tr>
     <tr>
       <td class='col-md-2'>
         Completed in:
@@ -41,6 +33,14 @@
         </div>
       </td>
     </tr>
+    <tr ng-show="category">
+      <td class='col-md-2'>
+        Category:
+      </td>
+      <td>
+        {{category.name}}
+      </td>
+    </tr>
     <tr ng-show="user">
       <td class='col-md-2'>
         Is assigned to:
@@ -49,7 +49,7 @@
         {{user.username}}, {{user.email}}
         <div ng-show="user_tasks">
           <div ng-repeat="task in user_tasks">
-            {{index + 1}}. {{task.title}}
+            {{index + 1}}. <strong>{{task.title}}</strong>
           </div>
         </div>
       </td>

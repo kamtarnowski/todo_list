@@ -17,6 +17,7 @@ angular.module('ToDoList')
       alertify.error('You are not authorized.');
     });
     $scope.tasks = function() {
+      AppFactory.save();
       Task.index().success(function(response) {
         $scope.tasks = response;
       }).error(function() {
@@ -26,9 +27,10 @@ angular.module('ToDoList')
     $scope.search_task = function() {
       Task.find($stateParams.id).success(function(response) {
         $scope.task = response[0];
-        $scope.username = response[1].username;
+        $scope.user = response[1];
         $scope.fixed_title = $scope.task.title;
-        $scope.user_id = $scope.task.user_id;
+        $scope.fixed_user = response[1];
+        $scope.fixed_category = response[2];
       }).error(function() {
         alertify.error("Error has occured.");
       });
@@ -49,7 +51,8 @@ angular.module('ToDoList')
                                         title: $scope.task.title,
                                         description: $scope.task.description,
                                         completed: $scope.task.completed,
-                                        user_id: $scope.user_id
+                                        user_id: $scope.task.user.id,
+                                        category_id: $scope.task.category.id
         },
         function() {
           $state.go('tasks');
@@ -90,9 +93,8 @@ angular.module('ToDoList')
       Task.show($stateParams.id).success(function(response) {
         $scope.task = response[0];
         $scope.user = response[1];
-        if ($scope.user == null) {
-          $scope.user_tasks = response[2];
-        }
+        $scope.user_tasks = response[2];
+        $scope.category = response[3];
       }).error(function() {
         alertify.error("Error has occured.");
       });
