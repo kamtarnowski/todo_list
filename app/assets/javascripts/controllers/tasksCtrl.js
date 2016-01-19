@@ -73,6 +73,11 @@ angular.module('ToDoList')
       });
     };
     };
+    $scope.drag_and_drop = function() {
+      $scope.$on('$dropletReady', function whenDropletReady() {
+        $scope.interface.allowedExtensions(['png', 'jpg', 'bmp', 'gif']);
+      });
+    };
     $scope.new = function() {
       Task.new({title: $scope.task.title,
                 description: $scope.task.description,
@@ -80,6 +85,7 @@ angular.module('ToDoList')
                 user_id: $scope.task.user.id,
                 category_id: $scope.task.category.id})
       .success(function() {
+        $scope.interface.uploadFiles();
         $state.go('tasks');
         alertify.success('Task has been succesfully created.')
       })

@@ -8,4 +8,5 @@
 //= require alertifyjs
 //= require Chart.js/Chart.js
 //= require bootstrap-sass-official
+//= require ng-droplet
 //= require_tree .

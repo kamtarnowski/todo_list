@@ -51,7 +51,6 @@ class TasksController < ApplicationController
   # PATCH/PUT /tasks/1
   # PATCH/PUT /tasks/1.json
   def update
-    binding.pry
     @task.update(task_params) ? respond_with(@task) : false
   end
 
