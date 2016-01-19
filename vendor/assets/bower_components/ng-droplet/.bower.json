@@ -1,0 +1,41 @@
+{
+  "name": "ng-droplet",
+  "version": "0.5.11",
+  "homepage": "https://github.com/Wildhoney/ngDroplet",
+  "authors": [
+    "Adam Timberlake <adam.timberlake@gmail.com>"
+  ],
+  "description": "Angular.js HTML5 file uploading with drag & drop and image/file preview.",
+  "main": "dist/ng-droplet.min.js",
+  "keywords": [
+    "image",
+    "upload",
+    "html5",
+    "drag",
+    "drop"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": ">=1.2.16"
+  },
+  "devDependencies": {
+    "angular-mocks": ">=1.2.16",
+    "progressbar.js": "~0.8.1"
+  },
+  "_release": "0.5.11",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.5.11",
+    "commit": "357e73111e48f61e3e76f844da7a4f990b6f28cc"
+  },
+  "_source": "git://github.com/Wildhoney/ngDroplet.git",
+  "_target": "*",
+  "_originalSource": "ng-droplet"
+}

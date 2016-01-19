@@ -24,6 +24,7 @@
     "font-awesome": "",
     "angular-devise": "",
     "alertifyjs": "",
-    "Chart.js": ""
+    "Chart.js": "",
+    "ng-droplet": ""
   }
 }
